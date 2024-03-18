@@ -181,6 +181,8 @@ function automul(M1::MPS, M2::MPS; tag_row::String="", tag_shared::String="",
         M = MSSTA.asMPO(_contract_fit(M1_, M2_; kwargs...))
     elseif alg == "naive"
         M = MSSTA.asMPO(contract(M1_, M2_; alg="naive", kwargs...))
+    elseif alg == "zipup"
+        M = MSSTA.asMPO(contract(M1_, M2_; alg="zipup", kwargs...))
     end
 
     M = MSSTA.postprocess(matmul, M)
